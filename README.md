@@ -1,5 +1,5 @@
 # Duet_3_6HC_Time_Lapse
-Create time lapse videos with your Duet 3 - 6HC Mainboard, mainly ment for 3D Printers, but can be used for other machines too.
+Create time lapse videos with your Duet 3 - 6HC Mainboard, mainly meant for 3D Printers, but can be used for other machines too.
 
 Designed to run on a Raspberry Pi and may be adaptable to other Linux platforms. Supports cameras via USB, Pi (ribbon cable), and Webcam. Produces photos and renders a video using MJPEG-Streamer & FFMPEG. Creates a sub-folders for photos and video with date and time stamps for each.
 
