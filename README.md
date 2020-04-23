@@ -94,7 +94,7 @@ G4 P1000                 ; wait a bit, P1000 = 1 second
 ; Time lapse - complete print
 G1 X30 Y190               ; move head out of camera way Optional but works very good, change position depending on your camera setup
 M400                      ; wait for all movement to complete
-M118 P4 S"PRINT_COMPLETE" ; take final picture
+M118 P0 S"PRINT_COMPLETE" ; take final picture
 G4 P500                   ; wait a bit
 ```
 
