@@ -4,7 +4,11 @@ Create time lapse videos with your Duet 3 - 6HC Mainboard, mainly meant for 3D P
 Designed to run on a Raspberry Pi and may be adaptable to other Linux platforms. Supports cameras via USB, Pi (ribbon cable), and Webcam. Produces photos and renders a video using MJPEG-Streamer & FFMPEG. Creates a sub-folders for photos and video with date and time stamps for each.
 
 ## Notes
-As the printer changes layers, Duet Web Control (DWC) will post PRINT_STARTED, LAYER_CHANGE, and PRINT_COMPLETE while the printer is operating and log them in the Duet Control Server Service.  The program uses these cues to monitor the service for changes and then to have M-JPEG take photos and store them so FFMPEG can then compile the time lapse video.  Note this idea was originally conceived by Danal in the post here: https://forum.duet3d.com/topic/14055/random-duet3-sbc-questions/8
+As the printer changes layers, Duet Web Control (DWC) will post PRINT_STARTED, LAYER_CHANGE, and PRINT_COMPLETE while the printer is operating and log them in the Duet Control Server Service.  The program uses these cues to monitor the service for changes and then to have M-JPEG take photos and store them so FFMPEG can then compile the time lapse video. To see the journal posts from the Duet Web Control enter the following:
+```
+sudo journalctl -f -u duetcontrolserver
+```
+Note this idea was originally conceived by Danal in the post here: https://forum.duet3d.com/topic/14055/random-duet3-sbc-questions/8
 Danal also has a more advanced Time Lapse here: https://github.com/DanalEstes/DuetLapse
 
 ## Status
@@ -20,6 +24,7 @@ A stock Raspberry Pi build for the Duet 3 - 6HC Mainboard lacks needed software 
 
 #### Ensure Linux is up to date
 ```
+sudo apt update
 sudo apt-get update
 sudo apt-get upgrade
 ```
