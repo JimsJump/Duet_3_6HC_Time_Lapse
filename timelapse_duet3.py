@@ -54,7 +54,7 @@ current_path = os.getcwd()
 now = datetime.datetime.now()
 timelapse_path = os.path.join(current_path, 'Video_' + now.strftime("%Y%m%dT%H%M%S") + '')
 os.makedirs(timelapse_path, access_rights)
-snapshots_path = os.path.join(timelapse_path, 'Images_'+ now.strftime("%Y%m%dT%H%M%S") + '')
+snapshots_path = os.path.join(timelapse_path, 'Images')
 os.makedirs(snapshots_path, access_rights)
 # announce where folders are located for this run
 print ("The current working directory is %s" % current_path)
@@ -108,7 +108,7 @@ while True :
                     r = requests.get(webcam_url, timeout=5, stream=True)
                     if r.status_code == 200:
                         now = datetime.datetime.now()
-                        pic = os.path.join(snapshots_path, now.strftime("%Y%m%dT%H%M%S")+ "_layer_" + str(layers) + ".jpg")
+                        pic = os.path.join(snapshots_path, "layer_" + str(layers) + ".jpg")
                         with open(pic, 'wb') as f:
                             for chunk in r:
                                 f.write(chunk)
@@ -127,7 +127,7 @@ while True :
                     r = requests.get(webcam_url, timeout=5, stream=True)
                     if r.status_code == 200:
                         now = datetime.datetime.now()
-                        pic = os.path.join(snapshots_path, now.strftime("%Y%m%dT%H%M%S")+ "_layer_" + str(layers) + ".jpg")
+                        pic = os.path.join(snapshots_path, "layer_" + str(layers) + ".jpg")
                         with open(pic, 'wb') as f:
                             for chunk in r:
                                 f.write(chunk)
@@ -139,7 +139,7 @@ while True :
                     video_file = os.path.abspath(os.path.join(timelapse_path, now.strftime("%Y%m%dT%H%M%S") + ".mp4"))
                     snapshots_files = os.path.join(snapshots_path, "*.jpg")
                     print('Compiling Video... %s' % datetime.datetime.now())
-                    subprocess.call(["ffmpeg", "-r", "20", "-y", "-pattern_type", "glob", "-i", snapshots_files, "-vcodec", "libx264", video_file])
+                    subprocess.call(["ffmpeg", "-r", "1", "-y", "-pattern_type", "glob", "-i", snapshots_files, "-vcodec", "libx264", video_file])
                     # announce Time Lapse completed
                     print((str(entry['__REALTIME_TIMESTAMP'] )+ ' ' + entry['MESSAGE']) + ' ' )
                     # give file locations
